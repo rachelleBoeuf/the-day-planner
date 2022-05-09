@@ -2,9 +2,11 @@ $(function() {
     //page init
     $(".calendar-button button").click(saveScheduleEvent);
 
-    //start the program
+    //load stored events
     loadScheduleEvents();
-    updateScheduleColors();
+
+    //update the time dynamically and colors
+    setTimeout('updateSchedulePlanner()', 1000);
 });
 
 function loadScheduleEvents() {
@@ -14,7 +16,10 @@ function loadScheduleEvents() {
     }
 }
 
-function updateScheduleColors() {
+function updateSchedulePlanner() {
+     //set current date/time
+     $(".today-date").html(moment().format('MMMM Do YYYY, h:mm:ss a'));
+
     //use moment libary to set the colors for the calendar
     let hour = moment().format('H');
     hour = 12;
@@ -31,6 +36,9 @@ function updateScheduleColors() {
                 break;
         }
     }
+
+    //repeat me every 1 seconds
+    setTimeout('updateSchedulePlanner()', 1000);
 }
 
 function saveScheduleEvent() {
