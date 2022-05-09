@@ -37,17 +37,17 @@ function updateSchedulePlanner() {
         }
     }
 
-    //repeat me every 1 seconds
+    //repeat every 1 seconds
     setTimeout('updateSchedulePlanner()', 1000);
 }
 
 function saveScheduleEvent() {
-    //get all the stuff we need to save this properly
+    //get everything needed to save this properly
     let parent = $(this).parent().parent();
     let hour = $(parent).data('hour');
     let event = $(parent).find(".calendar-event").html();
 
-    //update planner for that time slot with current event detail
+    //update planner for time slot with current event detail
     let planner = loadPlanner();
     planner[hour] = event;
     return savePlanner(planner);
